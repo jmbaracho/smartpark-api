@@ -4,6 +4,7 @@ import br.com.smartpark.model.StatusVeiculo;
 import br.com.smartpark.model.Veiculo;
 import br.com.smartpark.repository.VeiculoRepository;
 import br.com.smartpark.service.VeiculoService;
+import org.json.JSONObject;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -92,6 +93,15 @@ public class VeiculoServiceImpl implements VeiculoService {
     }
 
     @Override
+    public String vagasDisponiveisJson() {
+        long vagas = vagasDisponiveis();
+        JSONObject vagasToJson = new JSONObject();
+        vagasToJson.put("vagasDisponiveis", vagas);
+        String json_string = vagasToJson.toString();
+
+        return json_string;
+    }
+
     public long vagasDisponiveis() {
         long vagasTotal = 7;
         List<Veiculo> veiculosEstacionados = veiculoRepository.findAll();
@@ -99,6 +109,7 @@ public class VeiculoServiceImpl implements VeiculoService {
                 .stream()
                 .filter(el -> el.getStatusVeiculo().equals(StatusVeiculo.ESTACIONADO))
                 .count();
+        vagasTotal -= result;
         return vagasTotal - result;
     }
 
