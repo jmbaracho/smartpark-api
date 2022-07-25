@@ -109,7 +109,6 @@ public class VeiculoServiceImpl implements VeiculoService {
                 .stream()
                 .filter(el -> el.getStatusVeiculo().equals(StatusVeiculo.ESTACIONADO))
                 .count();
-        vagasTotal -= result;
         return vagasTotal - result;
     }
 
