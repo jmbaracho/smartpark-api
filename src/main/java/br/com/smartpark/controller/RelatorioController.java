@@ -31,8 +31,8 @@ public class RelatorioController {
     }
 
     @GetMapping(value = "/quantidade-vagas-disponiveis", produces = "application/json")
-    public long quantidadeVagasDisponiveis() {
-        return veiculoService.vagasDisponiveis();
+    public String quantidadeVagasDisponiveis() {
+        return veiculoService.vagasDisponiveisJson();
     }
 
 }

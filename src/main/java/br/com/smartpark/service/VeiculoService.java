@@ -11,5 +11,5 @@ public interface VeiculoService {
     Veiculo checkoutVeiculo(Veiculo veiculo) throws ParseException;
     List<Veiculo> findAll();
     List<Veiculo> findAllEstacionados();
-    long vagasDisponiveis();
+    String vagasDisponiveisJson();
 }
