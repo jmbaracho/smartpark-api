@@ -98,6 +98,7 @@ public class VeiculoServiceImpl implements VeiculoService {
         JSONObject vagasToJson = new JSONObject();
         vagasToJson.put("vagasDisponiveis", vagas);
         String json_string = vagasToJson.toString();
+
         return json_string;
     }
 
